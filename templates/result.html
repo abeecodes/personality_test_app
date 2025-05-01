@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personality Test - Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ffe6f0;
+            color: #222;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ffb6c1;
+            text-align: center;
+        }
+        h1 {
+            color: #ff1493;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 20px;
+            margin-top: 25px;
+            text-align: left;
+        }
+        li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ffd1e6;
+        }
+        li span.trait-name {
+            font-weight: normal;
+        }
+        li span.trait-value {
+            font-weight: normal;
+            float: right;
+        }
+        li.bold-trait span.trait-name {
+            font-weight: bold;
+            color: #c71585;
+        }
+        li.bold-trait span.trait-value {
+            font-weight: bold;
+            color: #c71585;
+        }
+        .username {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b30059;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #80004d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Personality Test Results for {{ username }}</h1>
+    <ul>
+        {% set max_trait = None %}
+        {% set max_score = -1 %}
+        {% for trait, value in score.items() %}
+            {% if value > max_score %}
+                {% set max_score = value %}
+                {% set max_trait = trait %}
+            {% endif %}
+        {% endfor %}
+        {% for trait, value in score.items() %}
+            <li class="{% if trait == max_trait %}bold-trait{% endif %}">
+                <span class="trait-name">{{ trait }}</span>
+                <span class="trait-value">{{ value }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="message">
+        Thank you for completing the test!
+    </div>
+</body>
+</html>

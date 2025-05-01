@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personality Test - Home</title>
+    <style>
+        body {
+            /* Pink to red vertical gradient background */
+            background: linear-gradient(to bottom, #ff69b4, #ff0000);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 60px 20px;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 4px #660033;
+        }
+        form {
+            margin-top: 30px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 280px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        input[type="submit"] {
+            padding: 10px 25px;
+            font-size: 18px;
+            margin-left: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: white;
+            color: #ff1493;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #ff69b4;
+            color: white;
+        }
+        img.gif-image {
+            margin-top: 25px;
+            max-width: 350px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 0 15px 5px #ff4da6;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Personality Test</h1>
+
+    <!-- GIF Image -->
+    <img src="{{ url_for('static', filename='images/welcome.gif') }}" alt="Welcome GIF" class="gif-image" />
+
+    <!-- Username input form -->
+    <form method="POST" action="{{ url_for('index') }}">
+        <input type="text" name="username" placeholder="Enter your username" required />
+        <input type="submit" value="Start Test" />
+    </form>
+</body>
+</html>

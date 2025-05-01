@@ -1,0 +1,26 @@
+question,reverse,trait
+I am the life of the party.,False,Extraversion
+I feel little concern for others.,True,Agreeableness
+I am always prepared.,False,Conscientiousness
+I get stressed out easily.,False,Neuroticism
+I have a rich vocabulary.,False,Openness
+I don't talk a lot.,True,Extraversion
+I am interested in people.,False,Agreeableness
+I leave my belongings around.,True,Conscientiousness
+I am relaxed most of the time.,False,Neuroticism
+I have difficulty understanding abstract ideas.,True,Openness
+I feel comfortable around people.,False,Extraversion
+I insult people.,True,Agreeableness
+I pay attention to details.,False,Conscientiousness
+I worry about things.,False,Neuroticism
+I have a vivid imagination.,False,Openness
+I keep in the background.,True,Extraversion
+I sympathize with others' feelings.,False,Agreeableness
+I make a mess of things.,True,Conscientiousness
+I seldom feel blue.,False,Neuroticism
+I am not interested in abstract ideas.,True,Openness
+I start conversations.,False,Extraversion
+I am not interested in other people's problems.,True,Agreeableness
+I get chores done right away.,False,Conscientiousness
+I am easily disturbed.,False,Neuroticism
+I have excellent ideas.,False,Openness
