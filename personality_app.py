@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, redirect, session, url_for
 import csv
 import os
 
+
+
 app = Flask(__name__)
 app.secret_key = "super_secret_key"  # Needed for session
 
@@ -102,4 +104,5 @@ def result():
     return render_template("result.html", username=username, score=score)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # default to 5000 for local testing
+    app.run(host="0.0.0.0", port=port, debug=True)
