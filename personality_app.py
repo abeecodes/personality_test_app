@@ -11,7 +11,9 @@ app.secret_key = "super_secret_key"  # Needed for session
 def load_questions():
     questions = []
     try:
-        with open(r"C:\Users\KIIT0001\Desktop\python\personality_test\personality_ques.csv", newline='', encoding='utf-8') as csvfile:
+        base_dir = os.path.dirname(__file__)
+        file_path = os.path.join(base_dir, 'personality_ques.csv')
+        with open(file_path, newline='', encoding='utf-8') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 questions.append({
@@ -97,9 +99,14 @@ def result():
     score = calculate_score(responses)
     username = session.get("username", "Anonymous")
 
-    # Save result to a file
-    with open(r"C:\Users\KIIT0001\Desktop\python\personality_test\personalitydata.txt", "a") as f:
-        f.write(f"{username}, {score}\n")
+    # Save result to a file (optional for local testing, might be disabled on Render)
+    try:
+        base_dir = os.path.dirname(__file__)
+        data_file_path = os.path.join(base_dir, 'personalitydata.txt')
+        with open(data_file_path, "a") as f:
+            f.write(f"{username}, {score}\n")
+    except Exception as e:
+        print("Could not save result:", e)
 
     return render_template("result.html", username=username, score=score)
 
