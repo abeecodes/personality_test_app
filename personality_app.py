@@ -5,9 +5,8 @@ import os
 
 
 app = Flask(__name__)
-app.secret_key = "super_secret_key"  # Needed for session
+app.secret_key = "super_secret_key"  
 
-# Load questions from CSV
 def load_questions():
     questions = []
     try:
@@ -32,7 +31,6 @@ def load_questions():
         print(f"Failed to load questions: {e}")
     return questions
 
-# Process responses and calculate the personality score
 def calculate_score(responses):
     score = {
         "Extraversion": 0,
@@ -47,7 +45,7 @@ def calculate_score(responses):
             question_index = int(question)
             response_val = int(response)
         except (ValueError, TypeError):
-            continue  # Skip invalid entries
+            continue  
 
         question_data = session['questions'][question_index]
         trait = question_data["trait"]
@@ -86,7 +84,7 @@ def quiz():
     if request.method == "POST":
         selected = request.form.get("option")
         responses = session.get("responses", {})
-        responses[str(index)] = selected  # store key as string to maintain JSON serializable keys
+        responses[str(index)] = selected  
         session["responses"] = responses
         session["question_index"] = index + 1
         return redirect(url_for("quiz"))
@@ -99,7 +97,6 @@ def result():
     score = calculate_score(responses)
     username = session.get("username", "Anonymous")
 
-    # Save result to a file (optional for local testing, might be disabled on Render)
     try:
         base_dir = os.path.dirname(__file__)
         data_file_path = os.path.join(base_dir, 'personalitydata.txt')
@@ -111,5 +108,5 @@ def result():
     return render_template("result.html", username=username, score=score)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))  # default to 5000 for local testing
+    port = int(os.environ.get("PORT", 5000))  
     app.run(host="0.0.0.0", port=port, debug=True)
