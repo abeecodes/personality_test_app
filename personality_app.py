@@ -7,6 +7,7 @@ import os
 app = Flask(__name__)
 app.secret_key = "super_secret_key"  
 
+#load questions
 def load_questions():
     questions = []
     try:
@@ -39,7 +40,7 @@ def calculate_score(responses):
         "Neuroticism": 0,
         "Openness": 0
     }
-    
+    # to calculate each personality score
     for question, response in responses.items():
         try:
             question_index = int(question)
@@ -109,4 +110,4 @@ def result():
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))  
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=True)  
